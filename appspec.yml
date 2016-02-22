@@ -1,0 +1,17 @@
+os: linux
+files:
+  - source: scripts/
+    destination: awesomescripts
+  - source: examples/consulkv/main.go
+    destination: scripts
+hooks:
+  BeforeInstall:
+    - location: scripts/beforeinstall.sh
+      timeout: 300
+  AfterInstall:
+    - location: scripts/afterinstall.sh
+  ApplicationStart:
+    - location: scripts/applicationstart.sh
+  ValidateService:
+    - location: scripts/validateservice.sh
+      timeout: 180
